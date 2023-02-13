@@ -1,0 +1,10 @@
+*package-lock*
+*node_modules*
+*DS_Store*
+*DockerFile*
+*dockerJob*
+*eslint*
+*.tar*
+*.sh*
+*.env*
+*keys.json*
