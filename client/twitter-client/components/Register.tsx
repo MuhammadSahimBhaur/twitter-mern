@@ -39,10 +39,20 @@ const Register: React.FC = () => {
             value={credentials.password}
             onChange={handleChange}
           />
-          <button type="button" onClick={handleSubmit} name="register">
+          <button
+            className="rounded-full"
+            type="button"
+            onClick={handleSubmit}
+            name="register"
+          >
             Register
           </button>
-          <button type="button" onClick={handleSubmit} name="login">
+          <button
+            className="rounded-full"
+            type="button"
+            onClick={handleSubmit}
+            name="login"
+          >
             Login
           </button>
         </form>

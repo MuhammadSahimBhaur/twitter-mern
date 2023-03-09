@@ -9,7 +9,6 @@ type Cardtypes = {
 const Card: React.FC<Cardtypes> = (props): JSX.Element => {
   return (
     <div
-      className="card"
       style={{
         width: props.width,
         height: props.height,
