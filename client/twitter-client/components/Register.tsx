@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "src/styles/Register.module.css";
-import useAuth from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/useAuth";
 
 const Register: React.FC = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });

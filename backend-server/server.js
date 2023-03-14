@@ -11,11 +11,11 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.get('/register', (req, res) => {
-    console.log(req)
-    register().then((status) => {
-        console.log(status)
-        res.json(status)
+app.post('/api/register', (req, res) => {
+    const { email, password } = req.body
+    register(email, password).then((mongoRes) => {
+        console.log(mongoRes)
+        res.json(mongoRes)
     })
 });
 
