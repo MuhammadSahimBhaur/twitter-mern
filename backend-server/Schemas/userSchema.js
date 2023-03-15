@@ -23,6 +23,13 @@ userSchema.pre('save', async function () {
     this.password = await encryptPassword(this.password);
 })
 
+userSchema.method.comparePassword = (myPlaintextPassword) => {
+    // get user password
+    // encrypt new pass
+    // compare password
+    // send back token
+}
+
 const userModel = mongoose.model('Users', userSchema);
 
 
