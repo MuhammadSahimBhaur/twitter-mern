@@ -18,8 +18,9 @@ async function main() {
 
 export async function register(email, password) {
   mongoose.connect(`mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.e0s0zo8.mongodb.net/data?retryWrites=true&w=majority`);
-  const newUser = new userModel({ email, password, tweets: [] });
-  let res = await newUser.save();
 
+  const newUser = new userModel({ email, password, tweets: [] });
+
+  let res = await newUser.save();
   return res;
 }

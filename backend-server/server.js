@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 app.post('/api/register', (req, res) => {
     const { email, password } = req.body
     register(email, password).then((mongoRes) => {
-        console.log(mongoRes)
+        // console.log(mongoRes)
         res.json(mongoRes)
     })
 });
