@@ -1,9 +1,12 @@
 import express from "express";
-import { register } from "./app.js";
+import { mongoConnect } from "./app.js";
+import { register } from "./Controllers/authentication.js";
 
 
 const app = express()
 app.use(express.json()) // for parsing application/json
+
+let connection = mongoConnect(); // connecting to the mongoDB
 
 const port = 4000
 
@@ -13,8 +16,8 @@ app.get('/', (req, res) => {
 
 app.post('/api/register', (req, res) => {
     const { email, password } = req.body
-    register(email, password).then((mongoRes) => {
-        console.log(mongoRes)
+    register(email, password, connection).then((mongoRes) => {
+        // console.log(mongoRes)
         res.json(mongoRes)
     })
 });
