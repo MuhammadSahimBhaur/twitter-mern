@@ -8,7 +8,6 @@ export const useAuth: any = (cred: credentials) => {
   axios({
     method: "post",
     url: "/api/register",
-    // baseURL: "http://localhost:4000",
     data: cred,
   }).then((res) => {
     console.log(res);
