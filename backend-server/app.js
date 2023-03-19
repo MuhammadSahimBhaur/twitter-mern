@@ -2,7 +2,6 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 import { mongoose } from "mongoose";
 import userModel from './Schemas/userSchema.js';
 import dotenv from 'dotenv';
-// import { register } from "./Controllers/authentication.js"
 
 dotenv.config();
 
