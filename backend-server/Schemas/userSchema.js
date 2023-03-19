@@ -1,11 +1,13 @@
 import { mongoose } from "mongoose";
 import bcrypt from "bcrypt";
 
+
 export const userSchema = new mongoose.Schema(
     {
         email: String,
         password: String,
         tweets: Array,
+        Token: String
     },
     {
         timestamps: true
@@ -20,14 +22,15 @@ async function encryptPassword(myPlaintextPassword) {
 };
 
 userSchema.pre('save', async function () {
-    this.password = await encryptPassword(this.password);
+    // console.log("first this.password: ", this.password)
+    const newPassword = await encryptPassword(this.password);
+    // console.log("newPassword: ", newPassword)
+    this.password = newPassword;
 })
 
-userSchema.method.comparePassword = (myPlaintextPassword) => {
-    // get user password
-    // encrypt new pass
-    // compare password
-    // send back token
+userSchema.methods.comparePassword = async function (myPlaintextPassword) {
+    let compareResult = await bcrypt.compare(myPlaintextPassword, this.password);
+    return compareResult;
 }
 
 const userModel = mongoose.model('Users', userSchema);
