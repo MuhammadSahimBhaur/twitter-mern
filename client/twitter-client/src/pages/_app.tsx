@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className="font-sans text-sm">
+    <div style={{}}>
       <Head>
         <title>Twitter</title>
       </Head>
