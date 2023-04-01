@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "src/styles/Register.module.css";
-import { useAuth } from "@/hooks/useAuth";
+import useFetch from "@/hooks/useFetch";
 import Card from "components/Card";
+import Link from "next/link";
+import axios from "axios";
+import { AuthContext } from "context/AuthContext";
 
-const Register: React.FC = () => {
+const Login: React.FC = () => {
+  const { isAuth, setIsAuth } = useContext(AuthContext);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [token, setToken] = useState(null);
 
   const handleChange: any = (event: any) => {
     const { name, value } = event.target;
@@ -14,7 +19,18 @@ const Register: React.FC = () => {
   };
 
   const handleSubmit: any = (event: any) => {
-    useAuth(credentials);
+    axios({ method: "post", url: "/api/auth/login", data: credentials }).then(
+      (res) => {
+        console.log(res);
+
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + res.data.loginToken;
+        if (res.data.loginToken) {
+          setToken(res.data.loginToken);
+          setIsAuth(true);
+        }
+      }
+    );
   };
 
   return (
@@ -45,15 +61,17 @@ const Register: React.FC = () => {
               className="rounded-full"
               type="button"
               onClick={handleSubmit}
-              name="register"
+              name="login"
             >
-              Register
+              Login
             </button>
+            <Link href="/register">Register</Link>
           </form>
+          {token ? <p>New token set! AKA logged in!</p> : null}
         </div>
       </Card>
     </div>
   );
 };
 
-export default Register;
+export default Login;
