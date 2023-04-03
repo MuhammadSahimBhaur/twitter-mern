@@ -6,7 +6,7 @@ import { generateToken } from "../Utils/token.js"
 
 dotenv.config();
 
-const USERNAME = process.env.USERNAME;
+const USERNAME = process.env.USER_NAME;
 const PASSWORD = process.env.PASSWORD;
 
 mongoose.set('strictQuery', true);

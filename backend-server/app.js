@@ -5,8 +5,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const USERNAME = process.env.USERNAME;
+const USERNAME = process.env.USER_NAME;
 const PASSWORD = process.env.PASSWORD;
+
+console.log(USERNAME, PASSWORD)
 
 mongoose.set('strictQuery', false);
 
